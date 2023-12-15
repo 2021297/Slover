@@ -16,7 +16,7 @@ import java.util.Scanner;
  * @author Sam
  * Please put the names and student numbers of the team here:
  * 
- * Name 1:
+ * Name 1: Yuna Jang
  * Number 1:
  * 
  * Name 2:
