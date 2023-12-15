@@ -225,4 +225,4 @@ public class AADP_Lab_SoccerSimulator {
             }         
         } while (!exit);   
     }     
-}//good
+}//goodgood
