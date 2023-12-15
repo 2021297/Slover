@@ -17,16 +17,16 @@ import java.util.Scanner;
  * Please put the names and student numbers of the team here:
  * 
  * Name 1: Yuna Jang
- * Number 1:
+ * Number 1: 2021297
  * 
- * Name 2:
- * Number 2:
+ * Name 2: Mirae yu
+ * Number 2: 2021332
  * 
- * Name 3:
- * Number 3:
+ * Name 3: Tumurtulga Batjargal
+ * Number 3: 2021284
  * 
- * Name 4:
- * Number 4
+ * Name 4: Jefferson Sousa Silva
+ * Number 4: 2021325
  * 
  */
 
@@ -41,23 +41,30 @@ public class AADP_Lab_SoccerSimulator {
         String DB_URL = "jdbc:mysql://localhost/" + dbName;
         String USER = "football";
         String PASS = "Java is almost as good as football";
-        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/", USER, PASS);
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
             Statement stmt = conn.createStatement();
-            stmt.execute("CREATE SCHEMA IF NOT EXISTS " + dbName +";");
+            stmt.execute("CREATE SCHEMA IF NOT EXISTS " + dbName + ";");
             stmt.execute("USE " + dbName + ";");
+
             for (String team : teams) {
                 stmt.execute(
-                        "CREATE TABLE IF NOT EXISTS "+ team + " ("
+                        "CREATE TABLE IF NOT EXISTS " + team + " ("
                                 + "name VARCHAR(30) NOT NULL,"
                                 + "number INT NOT NULL PRIMARY KEY,"
                                 + "birth VARCHAR(30),"
                                 + "position VARCHAR(30),"
                                 + "goalsScored INT,"
                                 + "background TEXT(1000));"
-                );                
+                );
             }
+
+            // Close resources
+            stmt.close();
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
